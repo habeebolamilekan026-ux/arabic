@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL-QALAM Arabic Learning | Ustaz Habeebullai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS: THE BLACK & GOLD IDENTITY --- */
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F2D472;
+            --dark-bg: #0A0A0A;
+            --card-bg: #161616;
+            --text-white: #F5F5F5;
+            --whatsapp-green: #25D366;
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Texture Overlay for a Premium Feel */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+            opacity: 0.15; z-index: -1; pointer-events: none;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 8%; background: rgba(0,0,0,0.9);
+            border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-img { height: 70px; transition: 0.3s; }
+
+        /* HERO SECTION */
+        .hero {
+            height: 85vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+            padding: 0 5%;
+        }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 7vw, 4.5rem); color: var(--gold); margin: 0; }
+        .hero p { font-size: 1.2rem; color: #bbb; margin: 20px 0 40px; max-width: 700px; }
+
+        /* BUTTONS */
+        .cta-gold {
+            background: linear-gradient(45deg, var(--gold), var(--gold-light));
+            color: black; padding: 16px 35px; border-radius: 50px;
+            font-weight: 700; text-decoration: none; text-transform: uppercase;
+            transition: 0.4s; display: inline-block; border: none; cursor: pointer;
+        }
+        .cta-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4); }
+
+        /* SECTIONS */
+        .section { padding: 100px 10%; }
+        .section-title { text-align: center; color: var(--gold); font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 50px; }
+
+        /* REVIEWS GRID */
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .review-card { background: var(--card-bg); padding: 30px; border-radius: 15px; border-left: 4px solid var(--gold); }
+        .stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; }
+        .reviewer { color: var(--gold); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+
+        /* ATTENDANCE / GATEKEEPER BOX */
+        .attendance-box {
+            background: #111; padding: 40px; border-radius: 20px;
+            border: 2px solid var(--gold); max-width: 500px; margin: 0 auto; text-align: center;
+        }
+        input { width: 100%; padding: 14px; margin: 12px 0; border-radius: 8px; border: 1px solid #444; background: #000; color: white; }
+
+        /* PRICING TABLE */
+        table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--card-bg); border-radius: 10px; overflow: hidden; }
+        th { background: var(--gold); color: black; padding: 15px; }
+        td { padding: 15px; border-bottom: 1px solid #333; text-align: center; }
+
+        footer { padding: 60px; text-align: center; background: #000; color: #555; border-top: 1px solid #222; }
+
+        @media (max-width: 768px) { .section { padding: 60px 5%; } h1 { font-size: 2.8rem; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="MY LOGO.png" alt="AL-QALAM Logo" class="logo-img">
+        <a href="#booking" class="cta-gold" style="padding: 10px 20px; font-size: 0.75rem;">Join Class</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Unveiling the Beauty <br>of Arabic</h1>
+        <p>Learn Quranic Arabic and Conversational Fluency with Ustaz Habeebullai. Tailored lessons for a global Ummah.</p>
+        <a href="#booking" class="cta-gold">Book Your Free Trial</a>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Student Success Stories</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The best structured Arabic program I've joined. Ustaz makes every word clear."</p>
+                <p class="reviewer">— Ahmad, Malaysia</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Incredible teaching style. I went from zero to reading Quranic verses in weeks."</p>
+                <p class="reviewer">— Fatima, Nigeria</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Very professional. The online system makes scheduling so easy for busy professionals."</p>
+                <p class="reviewer">— Omar, UK</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="booking">
+        <h2 class="section-title">Investment Plans</h2>
+        <table>
+            <tr><th>Plan</th><th>International (USD)</th><th>Nigeria (NGN)</th></tr>
+            <tr><td>One-on-One Session</td><td>$12 / Hour</td><td>₦10,000 / Hour</td></tr>
+            <tr><td>Group Session</td><td>$6 / Hour</td><td>₦5,000 / Hour</td></tr>
+        </table>
+        <div style="text-align:center; margin-top:30px;">
+            <p>Ready to start? Message Ustaz directly to confirm your payment and get your Access Code.</p>
+            <a href="https://wa.me/601172262853" class="cta-gold" style="background:var(--whatsapp-green); color:white; border:none; margin:10px;">WhatsApp Malaysia</a>
+            <a href="https://wa.me/2349038973862" class="cta-gold" style="background:var(--whatsapp-green); color:white; border:none; margin:10px;">WhatsApp Nigeria</a>
+        </div>
+    </section>
+
+    <section class="section" id="classroom">
+        <h2 class="section-title">Live Classroom Access</h2>
+        <div class="attendance-box">
+            <h3>Enter Your Details</h3>
+            <p>Enter your name and Access Code to join the live session.</p>
+            <form id="gatekeeperForm">
+                <input type="text" id="studentName" placeholder="Your Full Name" required>
+                <input type="password" id="accessCode" placeholder="Enter Access Code" required>
+                <button type="submit" class="cta-gold" style="width:100%; border:none; margin-top:10px;">Enter Classroom</button>
+            </form>
+            <p id="statusMsg" style="margin-top:20px; font-weight:700;"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AL-QALAM Arabic Learning by Ustaz Habeebullai.</p>
+        <p>Expert Quranic & Conversational Guidance.</p>
+    </footer>
+
+    <script>
+        // Set your master access code here
+        const MASTER_CODE = "ALQALAM786"; 
+
+        document.getElementById('gatekeeperForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('studentName').value;
+            const codeInput = document.getElementById('accessCode').value;
+            const status = document.getElementById('statusMsg');
+
+            if (codeInput === MASTER_CODE) {
+                status.style.color = "#D4AF37";
+                status.innerHTML = `Assalamu Alaikum ${name}! Access Granted. Redirecting to Zoom...`;
+                
+                // Redirect to Zoom (Replace with your actual Link)
+                setTimeout(() => {
+                    window.location.href = "https://zoom.us/j/YOUR_MEETING_ID"; 
+                }, 2000);
+            } else {
+                status.style.color = "#ff4444";
+                status.innerHTML = "❌ Invalid Access Code. Please contact Ustaz for payment.";
+            }
+        });
+
+        // Simple Fade-in effect on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(s => {
+                const top = s.getBoundingClientRect().top;
+                if(top < 600) s.style.opacity = "1";
+            });
+        });
+    </script>
+</body>
+</html>
