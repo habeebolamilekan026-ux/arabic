@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AL-QALAM | Executive Admin Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0a0a0a; color: #D4AF37; font-family: 'Montserrat', sans-serif; padding: 50px; }
+        .admin-card { background: #161616; border: 1px solid #D4AF37; padding: 30px; border-radius: 15px; max-width: 900px; margin: auto; }
+        h1 { border-bottom: 2px solid #D4AF37; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; color: white; }
+        th { background: #D4AF37; color: black; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #333; }
+        .btn { background: #D4AF37; color: black; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-right: 10px; }
+        .btn-danger { background: #ff4444; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-card">
+        <h1>🖋️ Al-Qalam Attendance Ledger</h1>
+        <p>This data is stored locally on this browser. Use this to track your students' consistency.</p>
+        
+        <div style="margin-bottom: 20px;">
+            <button class="btn" onclick="exportToCSV()">📥 Export to Excel (CSV)</button>
+            <button class="btn btn-danger" onclick="clearLogs()">🗑️ Reset All Logs</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Date</th>
+                    <th>Time (Check-in)</th>
+                </tr>
+            </thead>
+            <tbody id="logTableBody">
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Load the data from the "Gatekeeper"
+        function loadLogs() {
+            const history = JSON.parse(localStorage.getItem('al_qalam_attendance')) || [];
+            const tableBody = document.getElementById('logTableBody');
+            tableBody.innerHTML = "";
+
+            history.reverse().forEach(entry => {
+                const row = `<tr>
+                    <td>${entry.name}</td>
+                    <td>${entry.date}</td>
+                    <td>${entry.time}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function clearLogs() {
+            if(confirm("Are you sure? This will delete all student check-in history.")) {
+                localStorage.removeItem('al_qalam_attendance');
+                loadLogs();
+            }
+        }
+
+        function exportToCSV() {
+            const history = JSON.parse(localStorage.getItem('al_qalam_attendance')) || [];
+            let csvContent = "data:text/csv;charset=utf-8,Name,Date,Time\n";
+            history.forEach(e => { csvContent += `${e.name},${e.date},${e.time}\n`; });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "AlQalam_Attendance_Report.csv");
+            document.body.appendChild(link);
+            link.click();
+        }
+
+        window.onload = loadLogs;
+    </script>
+</body>
+</html>
