@@ -1,194 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AL-QALAM Arabic Learning | Ustaz Habeebullai</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- CSS: THE BLACK & GOLD IDENTITY --- */
-        :root {
-            --gold: #D4AF37;
-            --gold-light: #F2D472;
-            --dark-bg: #0A0A0A;
-            --card-bg: #161616;
-            --text-white: #F5F5F5;
-            --whatsapp-green: #25D366;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AL-QALAM Arabic Learning | Quranic &amp; Conversational Arabic</title>
+<meta name="description" content="Learn Quranic Arabic and conversational fluency at your own pace. Flexible plans built around your schedule and your budget.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#C9A24B;
+    --gold-light:#E8CE87;
+    --ink:#07070A;
+    --panel:#111013;
+    --panel-line:#232025;
+    --ivory:#F3EEE4;
+    --muted:#9C968E;
+    --whatsapp:#25D366;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
+  /* faint arabesque grid used as a recurring texture, not a stock photo */
+  .weave{
+    position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(201,162,75,0.06), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(201,162,75,0.05), transparent 45%);
+  }
 
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:1000;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 6%;
+    background:rgba(7,7,10,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .wordmark{
+    font-family:'Amiri', serif;
+    font-size:1.5rem;
+    letter-spacing:0.06em;
+    color:var(--gold-light);
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .wordmark span{font-size:0.6rem; letter-spacing:0.35em; color:var(--muted); font-family:'Jost',sans-serif; text-transform:uppercase;}
+  .nav-cta{
+    border:1px solid var(--gold); color:var(--gold-light);
+    padding:10px 22px; border-radius:2px; font-size:0.72rem;
+    letter-spacing:0.15em; text-transform:uppercase; text-decoration:none;
+    transition:.3s;
+  }
+  .nav-cta:hover{ background:var(--gold); color:var(--ink); }
 
-        /* Texture Overlay for a Premium Feel */
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/black-linen.png');
-            opacity: 0.15; z-index: -1; pointer-events: none;
-        }
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:120px 6% 80px;
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(7,7,10,0.55) 0%, rgba(7,7,10,0.88) 65%, var(--ink) 100%),
+      url('https://images.pexels.com/photos/29079520/pexels-photo-29079520.jpeg?auto=compress&cs=tinysrgb&w=1920') center 30%/cover no-repeat;
+  }
+  .hero-watermark{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-family:'Amiri', serif; font-size:min(50vw, 620px);
+    color:transparent;
+    -webkit-text-stroke:1px rgba(201,162,75,0.10);
+    z-index:0; user-select:none; pointer-events:none;
+    line-height:1;
+  }
+  .eyebrow{
+    position:relative; z-index:1;
+    font-size:0.72rem; letter-spacing:0.35em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:26px;
+  }
+  .hero h1{
+    position:relative; z-index:1;
+    font-family:'Amiri', serif; font-weight:700;
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    color:var(--ivory);
+    max-width:900px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--gold-light); }
+  .hero p{
+    position:relative; z-index:1;
+    max-width:560px; margin:26px auto 42px;
+    color:var(--muted); font-size:1.08rem; font-weight:300;
+  }
+  .cta-row{ position:relative; z-index:1; display:flex; gap:18px; flex-wrap:wrap; justify-content:center; }
 
-        /* NAVIGATION */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 8%; background: rgba(0,0,0,0.9);
-            border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 1000;
-        }
-        .logo-img { height: 70px; transition: 0.3s; }
+  .cta-gold, .cta-outline{
+    padding:16px 36px; border-radius:2px; font-size:0.78rem;
+    letter-spacing:0.12em; text-transform:uppercase; text-decoration:none;
+    display:inline-block; cursor:pointer; transition:.3s; border:1px solid transparent;
+  }
+  .cta-gold{ background:var(--gold); color:var(--ink); font-weight:600; }
+  .cta-gold:hover{ background:var(--gold-light); transform:translateY(-2px); }
+  .cta-outline{ border-color:var(--panel-line); color:var(--ivory); }
+  .cta-outline:hover{ border-color:var(--gold); color:var(--gold-light); }
 
-        /* HERO SECTION */
-        .hero {
-            height: 85vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
-            padding: 0 5%;
-        }
-        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 7vw, 4.5rem); color: var(--gold); margin: 0; }
-        .hero p { font-size: 1.2rem; color: #bbb; margin: 20px 0 40px; max-width: 700px; }
+  /* ---------- SECTIONS ---------- */
+  .section{ padding:110px 8%; opacity:0; transform:translateY(30px); transition:0.9s ease; }
+  .section.visible{ opacity:1; transform:translateY(0); }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 60px; }
+  .section-head .eyebrow{ margin-bottom:14px; }
+  .section-head h2{ font-family:'Amiri', serif; font-size:clamp(1.9rem,3.2vw,2.6rem); color:var(--ivory); }
+  .section-head p{ color:var(--muted); margin-top:16px; }
 
-        /* BUTTONS */
-        .cta-gold {
-            background: linear-gradient(45deg, var(--gold), var(--gold-light));
-            color: black; padding: 16px 35px; border-radius: 50px;
-            font-weight: 700; text-decoration: none; text-transform: uppercase;
-            transition: 0.4s; display: inline-block; border: none; cursor: pointer;
-        }
-        .cta-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4); }
+  /* divider ornament — an 8-point star, drawn in SVG, not a photo */
+  .rub{
+    width:34px; height:34px; margin:0 auto 20px;
+    color:var(--gold);
+  }
 
-        /* SECTIONS */
-        .section { padding: 100px 10%; }
-        .section-title { text-align: center; color: var(--gold); font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 50px; }
+  /* PHOTO FEATURE (mission block with real photo) */
+  .feature-wrap{
+    max-width:1100px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+  }
+  .feature-photo{
+    position:relative; border-radius:6px; overflow:hidden;
+    border:1px solid var(--panel-line);
+    aspect-ratio:4/5;
+  }
+  .feature-photo img{ width:100%; height:100%; object-fit:cover; }
+  .feature-photo::after{
+    content:""; position:absolute; inset:0;
+    box-shadow:inset 0 0 60px rgba(0,0,0,0.5);
+    pointer-events:none;
+  }
+  .feature-text h2{ font-family:'Amiri', serif; font-size:clamp(1.8rem,3vw,2.4rem); color:var(--ivory); margin-bottom:20px; }
+  .feature-text p{ color:var(--muted); margin-bottom:16px; }
+  @media (max-width:820px){ .feature-wrap{ grid-template-columns:1fr; } .feature-photo{ aspect-ratio:16/10; } }
 
-        /* REVIEWS GRID */
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .review-card { background: var(--card-bg); padding: 30px; border-radius: 15px; border-left: 4px solid var(--gold); }
-        .stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; }
-        .reviewer { color: var(--gold); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+  /* CLASSROOM split layout with photo */
+  .classroom-wrap{
+    max-width:1100px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    border-radius:8px; overflow:hidden; border:1px solid var(--panel-line);
+  }
+  .classroom-photo{ position:relative; min-height:480px; }
+  .classroom-photo img{ width:100%; height:100%; object-fit:cover; display:block; position:absolute; inset:0; }
+  .classroom-photo::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(7,7,10,0) 60%, rgba(7,7,10,0.9) 100%);
+  }
+  .classroom-form{ background:var(--panel); padding:56px 44px; display:flex; flex-direction:column; justify-content:center; }
+  .classroom-form h3{ font-family:'Amiri', serif; color:var(--gold-light); font-size:1.4rem; margin-bottom:10px; }
+  .classroom-form p{ color:var(--muted); font-size:0.92rem; }
+  @media (max-width:820px){ .classroom-wrap{ grid-template-columns:1fr; } .classroom-photo{ min-height:220px; } }
 
-        /* ATTENDANCE / GATEKEEPER BOX */
-        .attendance-box {
-            background: #111; padding: 40px; border-radius: 20px;
-            border: 2px solid var(--gold); max-width: 500px; margin: 0 auto; text-align: center;
-        }
-        input { width: 100%; padding: 14px; margin: 12px 0; border-radius: 8px; border: 1px solid #444; background: #000; color: white; }
+  /* REVIEWS */
+  .reviews-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:26px; max-width:1100px; margin:0 auto; }
+  .review-card{
+    background:var(--panel); border:1px solid var(--panel-line);
+    padding:36px; border-radius:4px; position:relative;
+    transition:.35s;
+  }
+  .review-card:hover{ border-color:var(--gold); transform:translateY(-4px); }
+  .stars{ color:var(--gold); letter-spacing:3px; margin-bottom:16px; font-size:0.95rem; }
+  .review-card p.quote{ color:#D8D3C8; font-size:0.98rem; }
+  .reviewer{ display:block; margin-top:22px; color:var(--gold-light); font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; }
 
-        /* PRICING TABLE */
-        table { width: 100%; border-collapse: collapse; margin: 30px 0; background: var(--card-bg); border-radius: 10px; overflow: hidden; }
-        th { background: var(--gold); color: black; padding: 15px; }
-        td { padding: 15px; border-bottom: 1px solid #333; text-align: center; }
+  /* FLEXIBLE PLAN (replaces fixed price table) */
+  .plan-wrap{
+    max-width:840px; margin:0 auto;
+    background:var(--panel); border:1px solid var(--panel-line);
+    border-radius:6px; padding:56px 48px;
+    display:grid; grid-template-columns:1fr 1fr; gap:48px;
+  }
+  .plan-wrap h3{ font-family:'Amiri', serif; font-size:1.5rem; color:var(--gold-light); margin-bottom:14px; }
+  .plan-wrap p{ color:var(--muted); font-size:0.96rem; }
+  .plan-list{ list-style:none; margin-top:20px; }
+  .plan-list li{ padding:10px 0; border-bottom:1px solid var(--panel-line); color:#D8D3C8; font-size:0.92rem; display:flex; gap:10px; }
+  .plan-list li::before{ content:"—"; color:var(--gold); }
+  .plan-side{ display:flex; flex-direction:column; justify-content:center; gap:14px; }
+  .plan-side .cta-gold, .plan-side .cta-outline{ text-align:center; }
+  @media (max-width:720px){ .plan-wrap{ grid-template-columns:1fr; padding:36px 28px; } }
 
-        footer { padding: 60px; text-align: center; background: #000; color: #555; border-top: 1px solid #222; }
+  /* CLASSROOM / GATEKEEPER */
+  .attendance-box{
+    background:var(--panel); border:1px solid var(--gold);
+    max-width:520px; margin:0 auto; padding:48px 40px;
+    border-radius:6px; text-align:center;
+  }
+  .attendance-box h3{ font-family:'Amiri', serif; color:var(--gold-light); font-size:1.4rem; margin-bottom:10px; }
+  .attendance-box p{ color:var(--muted); font-size:0.92rem; }
+  input{
+    width:100%; padding:14px 16px; margin:12px 0; border-radius:4px;
+    border:1px solid #2c2830; background:#000; color:var(--ivory); font-family:'Jost',sans-serif;
+  }
+  input:focus{ outline:none; border-color:var(--gold); }
+  #statusMsg{ margin-top:18px; font-size:0.9rem; min-height:1.4em; }
 
-        @media (max-width: 768px) { .section { padding: 60px 5%; } h1 { font-size: 2.8rem; } }
-    </style>
+  footer{
+    padding:60px 8%; text-align:center; background:#000;
+    border-top:1px solid var(--panel-line); color:var(--muted); font-size:0.85rem;
+  }
+  footer .wordmark{ justify-content:center; margin-bottom:14px; }
+
+  @media (max-width:768px){
+    .section{ padding:70px 6%; }
+    nav{ padding:14px 5%; }
+  }
+</style>
 </head>
 <body>
+<div class="weave"></div>
 
-    <nav>
-        <img src="MY LOGO.png" alt="AL-QALAM Logo" class="logo-img">
-        <a href="#booking" class="cta-gold" style="padding: 10px 20px; font-size: 0.75rem;">Join Class</a>
-    </nav>
+<nav>
+  <div class="wordmark">اَلْقَلَم <span>Al-Qalam Arabic</span></div>
+  <a href="#classroom" class="nav-cta">Join Class</a>
+</nav>
 
-    <section class="hero">
-        <h1>Unveiling the Beauty <br>of Arabic</h1>
-        <p>Learn Quranic Arabic and Conversational Fluency with Ustaz Habeebullai. Tailored lessons for a global Ummah.</p>
-        <a href="#booking" class="cta-gold">Book Your Free Trial</a>
-    </section>
+<section class="hero">
+  <div class="hero-watermark">اقرأ</div>
+  <div class="eyebrow">Ahlan wa Sahlan — Welcome</div>
+  <h1>Come as you are, <br><em>leave reading the words you love</em></h1>
+  <p>Whether you're starting from the alphabet or polishing your tajwīd, there's a seat waiting for you here. One-on-one and small-group lessons, taught patiently, at a pace built around you.</p>
+  <div class="cta-row">
+    <a href="#classroom" class="cta-gold">Book a Free Trial</a>
+    <a href="#plan" class="cta-outline">See how plans work</a>
+  </div>
+</section>
 
-    <section class="section">
-        <h2 class="section-title">Student Success Stories</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"The best structured Arabic program I've joined. Ustaz makes every word clear."</p>
-                <p class="reviewer">— Ahmad, Malaysia</p>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Incredible teaching style. I went from zero to reading Quranic verses in weeks."</p>
-                <p class="reviewer">— Fatima, Nigeria</p>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Very professional. The online system makes scheduling so easy for busy professionals."</p>
-                <p class="reviewer">— Omar, UK</p>
-            </div>
-        </div>
-    </section>
+<section class="section" id="story">
+  <div class="feature-wrap">
+    <div class="feature-photo">
+      <img src="https://images.pexels.com/photos/8522562/pexels-photo-8522562.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="An open Quran resting on a wooden stand" loading="lazy">
+    </div>
+    <div class="feature-text">
+      <div class="eyebrow">Why Al-Qalam</div>
+      <h2>Reading isn't a milestone here — it's where every lesson begins</h2>
+      <p>Every class opens with the letters themselves: how they sound, how they join, how they carry meaning across a page. From there, tajwīd and conversation grow naturally.</p>
+      <p>You won't be handed a workbook and left to catch up. Lessons move at the pace you actually need, one-on-one or in a small group of people learning together.</p>
+    </div>
+  </div>
+</section>
 
-    <section class="section" id="booking">
-        <h2 class="section-title">Investment Plans</h2>
-        <table>
-            <tr><th>Plan</th><th>International (USD)</th><th>Nigeria (NGN)</th></tr>
-            <tr><td>One-on-One Session</td><td>$12 / Hour</td><td>₦10,000 / Hour</td></tr>
-            <tr><td>Group Session</td><td>$6 / Hour</td><td>₦5,000 / Hour</td></tr>
-        </table>
-        <div style="text-align:center; margin-top:30px;">
-            <p>Ready to start? Message Ustaz directly to confirm your payment and get your Access Code.</p>
-            <a href="https://wa.me/601172262853" class="cta-gold" style="background:var(--whatsapp-green); color:white; border:none; margin:10px;">WhatsApp Malaysia</a>
-            <a href="https://wa.me/2349038973862" class="cta-gold" style="background:var(--whatsapp-green); color:white; border:none; margin:10px;">WhatsApp Nigeria</a>
-        </div>
-    </section>
+<section class="section" id="reviews">
+  <div class="section-head">
+    <svg class="rub" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,3 61,32 92,32 67,50 76,80 50,62 24,80 33,50 8,32 39,32" stroke="currentColor" stroke-width="2"/>
+    </svg>
+    <div class="eyebrow">Student Voices</div>
+    <h2>Trusted by learners across the Ummah</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">The best structured Arabic program I've joined. Every word is explained so clearly.</p>
+      <span class="reviewer">Ahmad, Malaysia</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">I went from zero to reading Qur'anic verses in a matter of weeks.</p>
+      <span class="reviewer">Fatima, Nigeria</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">Very professional. The online system makes scheduling easy for a busy week.</p>
+      <span class="reviewer">Omar, United Kingdom</span>
+    </div>
+  </div>
+</section>
 
-    <section class="section" id="classroom">
-        <h2 class="section-title">Live Classroom Access</h2>
-        <div class="attendance-box">
-            <h3>Enter Your Details</h3>
-            <p>Enter your name and Access Code to join the live session.</p>
-            <form id="gatekeeperForm">
-                <input type="text" id="studentName" placeholder="Your Full Name" required>
-                <input type="password" id="accessCode" placeholder="Enter Access Code" required>
-                <button type="submit" class="cta-gold" style="width:100%; border:none; margin-top:10px;">Enter Classroom</button>
-            </form>
-            <p id="statusMsg" style="margin-top:20px; font-weight:700;"></p>
-        </div>
-    </section>
+<section class="section" id="plan">
+  <div class="section-head">
+    <div class="eyebrow">Investment</div>
+    <h2>A plan built around your budget</h2>
+    <p>Every student's situation is different, so there's no fixed price list here. Tell us what you can commit, and we'll shape a schedule and rate that works for both of you.</p>
+  </div>
+  <div class="plan-wrap">
+    <div>
+      <h3>How it works</h3>
+      <ul class="plan-list">
+        <li>Message us on WhatsApp with your goals and availability</li>
+        <li>Let us know your budget — one-on-one or small group</li>
+        <li>We'll propose a rate and schedule for you to confirm</li>
+        <li>Start with a free trial session before anything is booked</li>
+      </ul>
+    </div>
+    <div class="plan-side">
+      <p style="margin-bottom:6px;">Reach out directly and mention your country so we can quote you in your local currency.</p>
+      <a href="https://wa.me/601172262853" class="cta-gold" style="background:var(--whatsapp); color:#fff;">WhatsApp — Malaysia</a>
+      <a href="https://wa.me/2349038973862" class="cta-outline">WhatsApp — Nigeria</a>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 AL-QALAM Arabic Learning by Ustaz Habeebullai.</p>
-        <p>Expert Quranic & Conversational Guidance.</p>
-    </footer>
+<section class="section" id="classroom">
+  <div class="section-head">
+    <div class="eyebrow">Live Session</div>
+    <h2>Classroom access</h2>
+  </div>
+  <div class="classroom-wrap">
+    <div class="classroom-photo">
+      <img src="https://images.pexels.com/photos/37831090/pexels-photo-37831090.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="A student studying with a laptop in a sunlit room" loading="lazy">
+    </div>
+    <div class="classroom-form">
+      <h3>Enter your details</h3>
+      <p>Enter your name and the access code sent to your WhatsApp or email.</p>
+      <form id="gatekeeperForm" autocomplete="off">
+        <input type="text" id="studentName" placeholder="Your full name" required>
+        <input type="password" id="accessCode" placeholder="Access code" required>
+        <button type="submit" class="cta-gold" style="width:100%; border:none; margin-top:8px;">Enter Classroom</button>
+      </form>
+      <p id="statusMsg"></p>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Set your master access code here
-        const MASTER_CODE = "ALQALAM786"; 
+<footer>
+  <div class="wordmark">اَلْقَلَم <span>Al-Qalam Arabic</span></div>
+  <p>&copy; 2026 AL-QALAM Arabic Learning — Quranic &amp; Conversational Guidance.</p>
+</footer>
 
-        document.getElementById('gatekeeperForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('studentName').value;
-            const codeInput = document.getElementById('accessCode').value;
-            const status = document.getElementById('statusMsg');
+<script>
+  // ---- Access-code gate ----
+  // NOTE (read the message below the code for why this matters):
+  // This is a client-side check only. Anyone can view this file's source
+  // and read the code below. It stops casual guessing, not a determined visitor.
+  const MASTER_CODE = "ALQALAM786";
 
-            if (codeInput === MASTER_CODE) {
-                status.style.color = "#D4AF37";
-                status.innerHTML = `Assalamu Alaikum ${name}! Access Granted. Redirecting to Zoom...`;
-                
-                // Redirect to Zoom (Replace with your actual Link)
-                setTimeout(() => {
-                    window.location.href = "https://zoom.us/j/YOUR_MEETING_ID"; 
-                }, 2000);
-            } else {
-                status.style.color = "#ff4444";
-                status.innerHTML = "❌ Invalid Access Code. Please contact Ustaz for payment.";
-            }
-        });
+  document.getElementById('gatekeeperForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('studentName').value.trim();
+    const codeInput = document.getElementById('accessCode').value.trim();
+    const status = document.getElementById('statusMsg');
 
-        // Simple Fade-in effect on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(s => {
-                const top = s.getBoundingClientRect().top;
-                if(top < 600) s.style.opacity = "1";
-            });
-        });
-    </script>
+    if (codeInput === MASTER_CODE) {
+      status.style.color = "var(--gold-light)";
+      status.textContent = `Assalamu Alaikum ${name}! Access granted — redirecting to Zoom...`;
+      setTimeout(() => {
+        window.location.href = "https://zoom.us/j/YOUR_MEETING_ID"; // replace with your real link
+      }, 1800);
+    } else {
+      status.style.color = "#ff5c5c";
+      status.textContent = "Invalid access code. Please contact us for payment or registration.";
+    }
+  });
+
+  // ---- Scroll reveal (IntersectionObserver instead of a scroll listener) ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.section').forEach(s => io.observe(s));
+</script>
 </body>
 </html>
